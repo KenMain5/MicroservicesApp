@@ -1,0 +1,23 @@
+
+
+eureka:
+  client:
+    register-with-eureka: false
+
+
+server:
+  port: 8222
+
+
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: ToDoList
+          uri: http://localhost:8090
+          predicates:
+            - Path=/toDoList/**
+
